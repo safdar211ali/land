@@ -1,0 +1,49 @@
+<div class="row ur-rtl">
+  <div class="col-md-12">
+    <div class="panel panel-default transparent">
+      <div class="panel-heading " style="background-color: #c5af59" >
+        <h3 class="panel-title text-right" style="font-weight: bold;font-size: large;">
+          <i class="fa fa-list"></i>
+          تعلیمی منصوبہ
+
+        </h3>
+      </div>
+      <div class="panel-body panel-bg" >
+        <div class=" row thaed-bt hidden-xs hidden-sm ">
+          <div class="col-md-4 col-sm-3" style="font-weight: bold;font-size: large;">ماہ وار فیس</div>
+          <div class="col-md-4 col-sm-3" style="font-weight: bold;font-size: large;">روزانہ کادورانیہ</div>
+          <div class="col-md-4 col-sm-3" style="font-weight: bold;font-size: large;">منصوبہ</div>
+        </div>
+        <% @fees.each do |f| %>
+            <!-- larger screen-->
+            <div class="row data-row2 hidden-sm hidden-xs ">
+              <div class="col-md-4 " style="font-size: large;">
+                <%= number_to_currency f.feeamount %>
+              </div>
+              <div class="col-md-4 " style="font-size: large;">
+                <%= f.urduration %>
+              </div>
+              <div class="col-md-4 " style="font-size: large;">
+                <%= f.urplan %>
+              </div>
+            </div>
+            <!--smaller screen-->
+            <div class="row data-row2 visible-xs visible-sm">
+              <div class="col-md-4 " style="font-size: large;"><b class="small-heading" style="margin-left: 10px;"> منصوبہ: </b><%= f.urplan %>
+              </div>
+
+              <div class="col-md-4  " style="font-size: large;"> <b class="small-heading" style="margin-left: 10px;">روزانہ کا دورانیہ:</b> <%= f.urduration %>
+              </div>
+
+              <div class="col-md-4 " style="font-size: large;"> <b class="small-heading " style="margin-left: 10px;"> ماہانہ فیس:</b> <%= number_to_currency f.feeamount %>
+              </div>
+
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

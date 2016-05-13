@@ -1,0 +1,60 @@
+<%= form_for(@fee, html: {class: "form-horizontal", role: "form"}) do |f| %>
+    <% if @fee.errors.any? %>
+        <div class="alert alert-danger alert-dismissable" role="alert">
+          <button type="button" class="close" data-dismiss="alert">
+            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h4><%= pluralize(@fee.errors.count, "error") %> prohibited this fee from being saved:</h4>
+
+          <ul>
+            <% @fee.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label 'Days/week', class: "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.text_field :plan, :placeholder => 'Days/week', class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label 'فی ہفتہ دن', class: "col-sm-2 control-label ur-font" %>
+      <div class="col-sm-10">
+        <%= f.text_field :urplan, :placeholder => 'فی ہفتہ دن', class: "form-control ur-rtl" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label 'Duration/day', class: "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.text_field :duration, :placeholder => 'Duration/day (like 45 minutes)', class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label 'فی دن دورانیہ', class: "col-sm-2 control-label ur-font" %>
+      <div class="col-sm-10">
+        <%= f.text_field :urduration, :placeholder => 'فی دن دورانیہ', class: "form-control ur-rtl" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label 'Fee/month', class: "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.number_field :feeamount, :placeholder => 'Fee per month in dollars', class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-sm-offset-9 col-sm-3">
+          <%=link_to fees_path, class: "btn btn-primary" do%>
+              <i class="fa fa-reply"></i> Cancel
+        <%end %>
+          <%= f.submit class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+
+
+
+<% end %>

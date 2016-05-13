@@ -1,0 +1,15 @@
+<div class="list-group ">
+  <%= link_to 'Home', admin_path ,class:'list-group-item list-group-item-warning '%>
+  <%= link_to 'Teachers', teachers_path,class:'list-group-item list-group-item-warning' %>
+  <%= link_to 'Contacts', contacts_path,class:'list-group-item list-group-item-warning' %>
+  <%= link_to 'Education', courses_path,class:'list-group-item list-group-item-warning' %>
+  <%= link_to 'Services', services_path,class:'list-group-item list-group-item-warning' %>
+  <%= link_to 'Fee & Duration', fees_path,class:'list-group-item list-group-item-warning' %>
+  <% if user_signed_in? %>
+      <%= link_to('Logout', destroy_user_session_path,class:'list-group-item list-group-item-warning',:method => :delete) %>
+      <%= link_to('Edit registration', edit_user_registration_path,class:'list-group-item list-group-item-warning') %>
+  <% else %>
+      <%= link_to('Login', new_user_session_path,class:'list-group-item list-group-item-warning') %>
+      <%= link_to('Register', new_user_registration_path,class:'list-group-item list-group-item-warning') %>
+  <% end %>
+</div>

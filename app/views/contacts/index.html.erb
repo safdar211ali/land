@@ -1,0 +1,78 @@
+<div class="header-div">
+  <div class="row">
+    <div class="col-sm-7">
+      <div class="header-text">Contacts</div>
+    </div>
+    <div class="col-sm-4 pull-right">
+      <div class="create">
+        <%= link_to new_contact_path, class: 'btn btn-primary pull-right', "data-toggle" => "modal", "data-target" => "#contacts", :remote => true do %>
+            <i class="fa fa-plus"></i>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">
+      <i class="fa fa-list"></i>
+      Contacts List
+    </h3>
+  </div>
+  <div class="panel-body">
+    <div class="row row-div-header bg-primary hidden-xs">
+       <div class="col-sm-2 ur-font">Type (قسم)</div>
+      <div class="col-sm-1 ur-font">Contact</div>
+    </div>
+    <% @teachers.each do |t| %>
+        <div class="teacher-bg"><%= t.name %></div>
+    <% t.contacts.each do |cont| %>
+        <div class="row row-div">
+               <div class="col-sm-2 ur-font">
+            <%= cont.contactname %> (<%= cont.urcontactname %>)
+          </div>
+
+          <div class="col-sm-1">
+            <%= cont.contact %>
+          </div>
+          <div class="row row-div-inner">
+            <div class="pull-right">
+
+              <%= link_to edit_contact_path(cont), class: "btn btn-primary btn-xs", "data-toggle" => "modal", "data-target" => "#contacts", :remote => true do %>
+                  <i class="fa fa-pencil"></i>
+              <% end %>
+
+
+              <%= link_to cont, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger btn-xs' do %>
+                  <i class="fa fa-minus-square-o"></i>
+              <% end %>
+
+            </div>
+          </div>
+        </div>
+    <% end %>
+<%end %>
+  </div>
+</div>
+
+<!--display form modal-->
+<div class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true" id="contacts">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+       Contact
+      </div>
+      <div class="modal-body">
+        <!-- to sho form-->
+        <div id="show"></div>
+
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
+</div>
+<!-- end display form-->
+

@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default transparent">
+      <div class="panel-heading " style="background-color: #c5af59">
+        <h3 class="panel-title">
+          <i class="fa fa-list"></i>
+          Contacts
+        </h3>
+      </div>
+      <div class="panel-body panel-bg">
+        <div class=" row thaed-bt  hidden-sm hidden-xs">
+          <div class="col-md-6 col-lg-6">Contact Type</div>
+          <div class="col-md-6 col-lg-6">Contact</div>
+        </div>
+        <% @teachers.each do |t| %>
+            <div class=" row teacher-bg">
+              <div class="col-md-12"> <%= t.name %></div>
+            </div>
+            <% t.contacts.each do |c| %>
+                <!-- larger screen-->
+                <div class="row data-row2 visible-lg visible-md">
+                  <div class="col-md-6 col-lg-6 " >
+                    <%= c.contactname %>
+                  </div>
+                  <div class="col-md-6 col-lg-6" >
+                    <%= c.contact %>
+                  </div>
+                </div>
+                <!--smaller screen-->
+                <div class="row data-row2 visible-xs visible-sm">
+                  <div class="col-md-6  " >
+                    <b class="small-heading " style="margin-right: 10px;">   <%= c.contactname %> : </b> <%= c.contact %>
+                  </div>
+                </div>
+            <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+

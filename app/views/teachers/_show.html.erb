@@ -1,0 +1,31 @@
+<div class="page-header teacher-bg">Name</div>
+<div class="row row-div">
+  <div class="col-md-6">Name:</div>
+  <div class="col-md-6"><%= @teacher.name %></div>
+</div>
+<div class="row row-div">
+  <div class=" col-md-6 ur-font">نام:</div>
+  <div class=" col-md-6 ur-font"><%= @teacher.urname %></div>
+</div>
+
+<div class="page-header teacher-bg">Contacts</div>
+
+<% @teacher.contacts.each do |c| %>
+    <div class="row row-div">
+      <div class=" col-md-6 ur-font"><%= c.contactname %>(<%= c.urcontactname %>):</div>
+      <div class="col-md-6"><%= c.contact %></div>
+    </div>
+<% end %>
+
+
+<div class="page-header teacher-bg">Education</div>
+
+<% @teacher.courses.ordered.each do |course| %>
+    <div class="row row-div">
+      <div class="col-md-6 ur-font"><%= course.coursename %>(<%= course.urcoursename %>):</div>
+      <div class="col-md-6 ur-font">
+       <%= course.school %>
+       (<%= course.urschool %>)
+      </div>
+    </div>
+<% end %>

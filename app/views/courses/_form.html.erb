@@ -1,0 +1,55 @@
+<%= form_for(@course, html: { class: "form-horizontal", role: "form" }) do |f| %>
+  <% if @course.errors.any? %>
+    <div class="alert alert-danger alert-dismissable" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <h4><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:</h4>
+
+      <ul>
+      <% @course.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="form-group">
+      <%= f.label 'Teacher Name', class: "col-sm-2 control-label" %>
+      <div class="col-sm-10 ur-font">
+        <%= f.collection_select :teacher_id,@all_teachers,:id,:full_name,{:prompt=>'Select a Teacher'}, class: "form-control" %>
+      </div>
+    </div>
+  <div class="form-group">
+    <%= f.label 'Course Name', class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :coursename,:placeholder=>'Course Name', class: "form-control" %>
+    </div>
+  </div>
+    <div class="form-group ur-font">
+      <%= f.label 'کورس کا نام', class: "col-sm-2 control-label" %>
+      <div class="col-sm-10 ur-rtl">
+        <%= f.text_field :urcoursename,:placeholder=>'کورس کا نام', class: "form-control" %>
+      </div>
+    </div>
+  <div class="form-group">
+    <%= f.label 'Institute Name', class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :school,:placeholder=>'Institute Name', class: "form-control" %>
+    </div>
+  </div>
+    <div class="form-group ur-font">
+      <%= f.label 'ادارے کا نام', class: "col-sm-2 control-label" %>
+      <div class="col-sm-10 ur-rtl">
+        <%= f.text_field :urschool,:placeholder=>'ادارے کا نام', class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-sm-offset-8 col-sm-4">
+          <%=link_to courses_path, class: "btn btn-primary" do%>
+              <i class="fa fa-reply"></i> Cancel
+          <%end %>
+          <%= f.submit class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+<% end %>

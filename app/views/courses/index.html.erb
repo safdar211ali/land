@@ -1,0 +1,81 @@
+<div class="header-div">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="header-text">Education</div>
+
+    </div>
+
+    <div class="col-sm-4 pull-right">
+      <div class="create">
+        <%= link_to new_course_path, class: 'btn btn-primary pull-right', "data-toggle" => "modal", "data-target" => "#courses", :remote => true do %>
+            <i class="fa fa-plus"></i>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">
+      <i class="fa fa-list"></i>
+      Education List
+    </h3>
+  </div>
+  <div class="panel-body">
+    <div class="row row-div-header bg-primary hidden-xs">
+      <div class="col-sm-3 ur-font">Course ( کورس کی قسم)</div>
+      <div class="col-sm-3 ur-font">Institute (ادارہ)</div>
+    </div>
+    <% @teachers.each do |t| %>
+       <div class="teacher-bg"><%= t.name %></div>
+    <% t.courses.ordered.each do |course| %>
+        <div class="row row-div">
+
+          <div class="col-sm-3 ur-font">
+            <%= course.coursename %> (<%= course.urcoursename %>)
+          </div>
+
+          <div class="col-sm-3 ur-font">
+            <%= course.school %> (<%= course.urschool %>)
+          </div>
+          <div class="row row-div-inner">
+            <div class="pull-right">
+
+              <%= link_to edit_course_path(course), "data-toggle" => "modal", "data-target" => "#courses", :remote => true do %>
+                  <i class="fa fa-pencil"></i>
+              <% end %>
+
+
+              <%= link_to course, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger btn-xs' do %>
+                  <i class="fa fa-minus-square-o"></i>
+              <% end %>
+
+            </div>
+          </div>
+        </div>
+    <% end %>
+<%end %>
+     </div>
+</div>
+
+
+<!--display form modal-->
+<div class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true" id="courses">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        Course
+      </div>
+      <div class="modal-body">
+        <!-- to show form-->
+        <div id="show"></div>
+
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
+</div>
+<!-- end display form-->
+

@@ -1,0 +1,26 @@
+<div class="row ">
+  <div class="col-md-12">
+    <div class="panel panel-default transparent">
+      <div class="panel-heading " style="background-color: #c5af59">
+        <h3 class="panel-title">
+          <i class="fa fa-list"></i>
+          Services
+        </h3>
+      </div>
+
+      <div class="panel-body panel-bg">
+        <div class="row thaed-bt">
+         <div class="col-md-11">Services</div>
+        </div>
+
+        <% n=1 %>
+        <% @services.each_with_index do |s, i| %>
+            <div class="row data-row2">
+             <div class="col-md-12  "><b class="small-heading " style="margin-right: 10px;"><%= i+n %> -</b> <%= s.name %></div>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+

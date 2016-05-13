@@ -1,0 +1,78 @@
+
+<div class="header-div">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="header-text">Services</div>
+
+
+    </div>
+
+    <div class="col-sm-4 pull-right">
+      <div class="create">
+        <%= link_to new_service_path, class: 'btn btn-primary pull-right',"data-toggle"=>"modal","data-target"=>'#services', :remote => true do %>
+            <i class="fa fa-plus"></i>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">
+      <i class="fa fa-list"></i>
+      Services List
+    </h3>
+  </div>
+  <div class="panel-body">
+    <div class="row row-div-header bg-primary hidden-xs">
+      <div class="col-sm-6 ur-font">Services (خدمات)</div>
+
+    </div>
+    <% @services.each do |service| %>
+        <div class="row row-div">
+          <div class="col-sm-6 ur-font">
+            <%= service.name %> (<%= service.urname %>)
+          </div>
+
+          <div class="row row-div-inner">
+            <div class="pull-right">
+
+              <%= link_to edit_service_path(service), class: "btn btn-primary btn-xs","data-toggle"=>"modal","data-target"=>'#services', :remote => true do %>
+                  <i class="fa fa-pencil"></i>
+              <% end %>
+
+
+              <%= link_to service, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger btn-xs' do %>
+                  <i class="fa fa-minus-square-o"></i>
+              <% end %>
+
+            </div>
+          </div>
+        </div>
+    <% end %>
+
+
+  </div>
+</div>
+
+
+
+<!--display form modal-->
+<div class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true" id="services">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        Services
+      </div>
+      <div class="modal-body">
+        <!-- to sho form-->
+        <div id="show"></div>
+
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
+</div>
+<!-- end display form-->
